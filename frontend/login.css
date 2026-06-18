@@ -1,0 +1,44 @@
+body{
+background:#0f172a;
+color:white;
+font-family:Arial;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.auth-box{
+width:350px;
+padding:30px;
+background:#1e293b;
+border-radius:15px;
+box-shadow:0 0 20px #7c3aed;
+}
+
+.auth-box h1{
+text-align:center;
+color:#00e5ff;
+}
+
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:8px;
+}
+
+button{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+#message{
+margin-top:15px;
+text-align:center;
+}

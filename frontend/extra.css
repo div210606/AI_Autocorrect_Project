@@ -1,0 +1,131 @@
+/* ── Section Titles ── */
+.section-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #38bdf8;
+    margin: 30px 0 15px 0;
+}
+
+/* ── Section Header row (title + button) ── */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.section-header .section-title { margin: 0; }
+
+/* ── Small Button ── */
+.btn-small {
+    padding: 7px 14px;
+    font-size: 13px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    color: white;
+    background: #3b82f6;
+}
+.btn-small:hover { background: #2563eb; transform: translateY(-1px); }
+
+/* ── Danger Button ── */
+.btn-danger { background: #ef4444 !important; }
+.btn-danger:hover { background: #dc2626 !important; }
+
+/* ── Empty State ── */
+.empty-state {
+    padding: 14px;
+    opacity: 0.5;
+    font-style: italic;
+    text-align: center;
+    background: none !important;
+    cursor: default !important;
+    list-style: none;
+}
+
+/* ── History & Doc list items ── */
+#historyList li,
+#docsList li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.history-text,
+.doc-text {
+    flex: 1;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.doc-preview { display: flex; flex-direction: column; flex: 1; gap: 2px; }
+.doc-date { font-size: 11px; opacity: 0.5; }
+
+/* ── Tiny Load Button inside list items ── */
+.btn-tiny {
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 6px;
+    border: none;
+    background: #2563eb;
+    color: white;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 0.2s;
+    flex-shrink: 0;
+}
+.btn-tiny:hover { background: #1d4ed8; transform: translateY(-1px); }
+
+/* ── Settings Panel Header ── */
+.settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+/* ── Settings Close Button ── */
+.btn-close {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 32px;
+    text-align: center;
+    transition: 0.3s;
+}
+.btn-close:hover { background: #ef4444; border-color: #ef4444; transform: none; }
+
+/* ── Settings Groups ── */
+.settings-group { margin-bottom: 22px; }
+.settings-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 7px;
+    opacity: 0.8;
+}
+.settings-info { font-size: 15px; font-weight: 600; color: #38bdf8; margin: 0; }
+
+/* ── Overlay ── */
+.settings-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+}
+.settings-overlay.show { display: block; }
+
+/* ── Light theme overrides ── */
+body.light .section-title  { color: #2563eb; }
+body.light .settings-info  { color: #2563eb; }
+body.light .btn-close      { color: #222; border-color: rgba(0,0,0,0.2); }
+body.light #settingsPanel  { background: #f8fafc; color: #222; }
+body.light .settings-panel select { background: #e2e8f0; color: #222; }
+body.light .btn-tiny       { background: #2563eb; }

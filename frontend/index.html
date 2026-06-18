@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI AutoCorrect Assistant</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="extra.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body class="dark">
+
+    <!-- AUTH GUARD -->
+    <script>
+        const authUser = localStorage.getItem("username");
+        if (!authUser) window.location.href = "login.html";
+    </script>
+
+    <div class="dashboard">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="logo">🧠 AI Assistant</div>
+            <ul class="menu">
+                <li onclick="scrollTo({top:0,behavior:'smooth'})">🏠 Dashboard</li>
+                <li onclick="document.getElementById('statsSection').scrollIntoView({behavior:'smooth'})">📊 Statistics</li>
+                <li onclick="document.getElementById('historyBox').scrollIntoView({behavior:'smooth'})">📜 History</li>
+                <li onclick="document.getElementById('savedDocs').scrollIntoView({behavior:'smooth'})">📁 Documents</li>
+                <li onclick="openSettings()">⚙️ Settings</li>
+                <li onclick="logout()">🚪 Logout</li>
+            </ul>
+            <div class="quote">"Good writing is clear thinking made visible."</div>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="container">
+
+            <div id="welcomeUser" class="welcome-user"></div>
+
+            <h1>AI AutoCorrect Assistant</h1>
+            <p class="subtitle">Smart Grammar Correction &amp; Writing Enhancement</p>
+
+            <textarea id="inputText" placeholder="Type or paste your text here..." oninput="updateStats()"></textarea>
+
+            <div class="buttons">
+                <button onclick="correctText()">✅ Correct Grammar</button>
+                <button onclick="improveWriting()">✨ Improve Writing</button>
+                <button onclick="formalTone()">🎩 Formal Tone</button>
+                <button onclick="copyResult()">📋 Copy Result</button>
+                <button onclick="saveDocument()">💾 Save Document</button>
+                <button onclick="toggleTheme()">🌓 Toggle Theme</button>
+                <button onclick="downloadPDF()">📄 Download PDF</button>
+                <button class="btn-danger" onclick="clearText()">🗑️ Clear</button>
+            </div>
+
+            <div id="result"><h3>Results will appear here...</h3></div>
+
+            <!-- STATISTICS -->
+            <section id="statsSection">
+                <h2 class="section-title">📊 Statistics</h2>
+                <div class="stats">
+                    <div class="card"><h3>Words</h3><span id="wordCount">0</span></div>
+                    <div class="card"><h3>Characters</h3><span id="charCount">0</span></div>
+                    <div class="card"><h3>Sentences</h3><span id="sentenceCount">0</span></div>
+                    <div class="card"><h3>Corrections Made</h3><span id="correctionCount">0</span></div>
+                </div>
+            </section>
+
+            <!-- HISTORY -->
+            <section id="historyBox">
+                <div class="section-header">
+                    <h2 class="section-title">📜 History</h2>
+                    <button class="btn-small btn-danger" onclick="clearHistory()">🗑️ Clear History</button>
+                </div>
+                <ul id="historyList">
+                    <li class="empty-state">No history yet. Start correcting text!</li>
+                </ul>
+            </section>
+
+            <!-- SAVED DOCUMENTS -->
+            <section id="savedDocs">
+                <h2 class="section-title">📁 Saved Documents</h2>
+                <ul id="docsList">
+                    <li class="empty-state">No saved documents yet.</li>
+                </ul>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- SETTINGS PANEL -->
+    <div class="settings-panel" id="settingsPanel">
+        <div class="settings-header">
+            <h2>⚙️ Settings</h2>
+            <button class="btn-close" onclick="closeSettings()">✕</button>
+        </div>
+        <div class="settings-group">
+            <label>🎨 Theme</label>
+            <select id="themeSelect" onchange="changeTheme()">
+                <option value="dark">Dark</option>
+                <option value="light">Light</option>
+            </select>
+        </div>
+        <div class="settings-group">
+            <label>🔤 Font Size</label>
+            <select id="fontSizeSelect" onchange="changeFontSize()">
+                <option value="14px">Small (14px)</option>
+                <option value="16px">Medium (16px)</option>
+                <option value="18px">Large (18px)</option>
+                <option value="20px">Extra Large (20px)</option>
+            </select>
+        </div>
+        <div class="settings-group">
+            <label>👤 Logged in as</label>
+            <p id="settingsUsername" class="settings-info"></p>
+        </div>
+        <button class="btn-danger" style="width:100%;margin-top:10px;" onclick="logout()">🚪 Logout</button>
+    </div>
+
+    <div class="settings-overlay" id="settingsOverlay" onclick="closeSettings()"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
